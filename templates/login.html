@@ -1,0 +1,28 @@
+<html>
+<head> 
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <script type="text/javascript" src="{% static "java/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript">
+        //Contact facebook to login
+        $('#loginform').submit(function(e){
+            $.ajax({
+                type:"POST",
+                url:"/administrationpage/",
+                data:$('#loginform').serialize(),
+                success: function(msg){
+                    console.log(msg);
+                    window.location = msg;
+                }
+            });
+            e.preventDefault();
+        });
+    </script>
+</head>
+<body>
+
+    <div class='center' id='siteContent'>
+        <a href="{% url "socialauth_begin" "facebook" %}">Logga in med the Facebook</a>
+    </div>
+</body>
+</html>

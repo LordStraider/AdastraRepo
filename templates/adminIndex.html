@@ -1,0 +1,79 @@
+<html>
+<head> 
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/gallery.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/dropDown.css" %}">
+<script type="text/javascript" src="{% static "java/js/jquery-1.9.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "java/js/jquery-ui-1.10.3.custom.min.js" %}"></script>
+<script type="text/javascript" src="{% static "java/menuLoader.js" %}"></script>
+<script type="text/javascript" src="{% static "java/functions.js" %}"></script>
+<script type="text/javascript" src="{% static "java/admininstration.js" %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var prev = '';
+        var next = '';
+        var curr = '';
+
+        //Load index menu
+        loadAdminContent('/administrationpage/siteContent/Hem/');
+        loadMenu(true);
+
+        //If the mouse is dragged over or clicked on a menu, update content
+        var prev;
+        $("#jquerymenu").on("click", function(e) {
+            if (e.toElement.href !== undefined) {
+                var href = e.toElement.href.split('/');
+                if (href[href.length - 2] == "manageMenu") {
+                    loadMenuManager();
+                    e.stopImmediatePropagation();
+                    return false;
+                }
+                reloadPage(e, '/administrationpage', true);
+                return false;
+            }
+        });
+
+        /*$(window).bind('beforeunload', function(e){
+            console.log(e);
+            e.preventDefault();
+            return false;
+        });*/
+    });
+
+    //Add authentication cookie before each ajax calls
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                // Only send the token to relative URLs i.e. locally.
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        }
+    });
+</script>
+</head>
+<body>
+    <div class='center' id='logo'>
+        <div id="login"><a href="/">Lämna administrationssidan</a> <a href="/logout/">Logga ut</a></div>
+    </div>
+    
+    <div class='center' id='jquerymenu'></div>
+
+    <div class='center' id='siteContent'><br/>Du har en gammal webläsare, för att se denna sida behöver du en modernare webläsare med javascript påslaget, så som:</br><ul><li><a href="http://www.opera.com">Opera</a></li><li><a href="http://www.firefox.com">Firefox</a></li><li><a href="http://www.chrome.com">Chrome</a></li></ul></div>
+</body>
+</html>

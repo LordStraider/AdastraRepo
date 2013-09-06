@@ -1,0 +1,5 @@
+python manage.py runserver
+python manage.py evolve --hint --execute
+python manage.py syncdb
+sudo /etc/init.d/apache2 restart
+sudo cat /var/log/apache2/error.log
