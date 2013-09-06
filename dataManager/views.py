@@ -29,7 +29,7 @@ def uploadFiles(request):
         if request.is_ajax():
             newString = ''  # This variable is going to contain json string for the object in the database.
             site = request.POST.get('site')
-            albumpath = 'meda/images/' + site + '/'
+            albumpath = 'media/images/' + site + '/'
             #albumpath = 'static/albums/' + site + '/'
 
             if not os.path.isdir(albumpath):  # Check if the path exist, otherwise create it
@@ -68,7 +68,7 @@ def uploadFiles(request):
             obj.save()
 
             if newString != '':
-                json = '{"newFile": "True", "path": "/static/images/albums/' + site + '/", "file": "' + newString + '"}'
+                json = '{"newFile": "True", "path": "/media/images/' + site + '/", "file": "' + newString + '"}'
             else:
                 json = '{"newFile": "False"}'
 
@@ -87,7 +87,7 @@ def uploadImage(request):
 
     if request.method == 'POST':
         if request.is_ajax():
-            albumpath = settings.STATIC_URL + '/images/contentImages/'
+            albumpath = settings.MEDIA_URL + '/images/contentImages/'
             link = request.POST.get('link')
             file = request.FILES.getlist('file')[0]
             path = albumpath + file.name
@@ -314,7 +314,7 @@ def siteAdminContent(request, site=''):  # returns the site content in json form
 
 def fileLoader(request, site=''):  # returns the content of the albums, listing all pictures in json.
     imageAlbum = Content.objects.get(site=site).text.split(', ')
-    string = '[{"title": "' + imageAlbum.pop(0) + '"}, {"path": "' + settings.STATIC_URL + 'images/albums/' + site + '/"}, '
+    string = '[{"title": "' + imageAlbum.pop(0) + '"}, {"path": "' + settings.MEDIA_URL + 'images/' + site + '/"}, '
     for image in imageAlbum:
         string += '{"fileLoader": "' + image + '"}, '
     string = string[:-2] + ']'

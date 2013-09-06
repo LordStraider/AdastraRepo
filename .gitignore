@@ -13,3 +13,4 @@ bin-release/
 Server/
 .DS_Store
 static/images/
+media/images/
