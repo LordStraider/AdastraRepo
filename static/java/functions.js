@@ -72,7 +72,6 @@ function loadFileContent(site) {
 
 var prev;
 function reloadPage(e, preAdress, loggedIn) {
-    console.log(e.target.href);
     if (e.target.href !== undefined) {
         e.stopImmediatePropagation();
 

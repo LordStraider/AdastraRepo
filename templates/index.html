@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static "css/gallery.css" %}">
 <link rel="stylesheet" type="text/css" href="{% static "css/dropDown.css" %}">
-<script type="text/javascript" src="{% static "java/js/jquery-1.9.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "java/js/jquery-1.9.1.js" %}"></script>
 <script type="text/javascript" src="{% static "java/js/jquery-ui-1.10.3.custom.min.js" %}"></script>
 <script type="text/javascript" src="{% static "java/menuLoader.js" %}"></script>
 <script type="text/javascript" src="{% static "java/functions.js" %}"></script>
@@ -98,10 +98,8 @@
         }
 
         if (e.keyCode == 39) { 
-            console.log("klickade 39");
             setPicIndex(currPic+1);
             $( ".scroll-content img" ).each(function( key ) {
-                console.log($(this));
                 if (currPic == $(this).context.id) {
                     changePicture($(this).context.src, $(this).context.alt);
                     return false;
