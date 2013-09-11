@@ -97,3 +97,14 @@ function reloadPage(e, preAdress, loggedIn) {
         return false;
     }
 }
+
+function adjustStyle(width) {
+    widthInt = parseInt(width, 10);
+    if (widthInt < 701) {
+        $("#size-stylesheet").attr("href", "/static/css/narrow.css");
+    } else if ((widthInt >= 701) && (widthInt < 900)) {
+        $("#size-stylesheet").attr("href", "/static/css/medium.css");
+    } else {
+       $("#size-stylesheet").attr("href", "/static/css/wide.css");
+    }
+}

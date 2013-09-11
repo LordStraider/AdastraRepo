@@ -1,9 +1,10 @@
 <html>
 <head> 
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-<link rel="stylesheet" type="text/css" href="{% static "css/gallery.css" %}">
-<link rel="stylesheet" type="text/css" href="{% static "css/dropDown.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+<link id="size-stylesheet" rel="stylesheet" type="text/css" href="{% static "css/narrow.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/gallery.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/dropDown.css" %}"/>
 <script type="text/javascript" src="{% static "java/js/jquery-1.9.1.js" %}"></script>
 <script type="text/javascript" src="{% static "java/js/jquery-ui-1.10.3.custom.min.js" %}"></script>
 <script type="text/javascript" src="{% static "java/menuLoader.js" %}"></script>
@@ -108,6 +109,13 @@
         }
     });
 
+    $(function() {
+        adjustStyle($(this).width());
+        $(window).resize(function() {
+            adjustStyle($(this).width());
+        });
+    });
+
 </script>
 
 <style type="text/css">
@@ -123,16 +131,16 @@
 <body>
     <div class='center'>
         <div id='logo'>
+            <img src="/static/images/styles/024.jpg" alt=""/>
             <div id='name'>
                 <p>Ad Astra Hästcenter</p>
             </div>
 
             <div id="login"></div>
         </div>
-        <br/>
         <div id='jquerymenu'></div>
 
-        <div id='siteContent'><br/><br/>Välkommen till Ad Astra Hästcenter!<br/>
+        <div id='siteContent'><Välkommen till Ad Astra Hästcenter!<br/>
 Lättast kontaktar du oss med din förfrågan via mail. <br/>
 sally.adastra@gmail.com <br/>
 <br/>
@@ -145,7 +153,8 @@ Ad Astra Hästcenter <br/>
 Steninge <br/>
 74195 KNIVSTA <br/>
 <br/><br/>
-Du har en gammal webläsare, för att se denna sida behöver du en modernare webläsare med javascript påslaget, så som:</br><ul><li><a href="http://www.opera.com">Opera</a></li><li><a href="http://www.firefox.com">Firefox</a></li><li><a href="http://www.chrome.com">Chrome</a></li></ul></div>
+Du har en gammal webläsare, för att se denna sida behöver du en modernare webläsare med javascript påslaget, så som:</br><ul><li><a href="http://www.opera.com">Opera</a></li><li><a href="http://www.firefox.com">Firefox</a></li><li><a href="http://www.chrome.com">Chrome</a></li></ul>
+        </div>
     </div>
 
 </body>
