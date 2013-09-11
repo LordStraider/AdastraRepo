@@ -29,7 +29,7 @@ def uploadFiles(request):
         if request.is_ajax():
             newString = ''  # This variable is going to contain json string for the object in the database.
             site = request.POST.get('site')
-            albumpath = 'media/images/' + site + '/'
+            albumpath = 'home/AdastraRepo/media/images/' + site + '/'
             #albumpath = 'static/albums/' + site + '/'
 
             if not os.path.isdir(albumpath):  # Check if the path exist, otherwise create it
@@ -87,7 +87,7 @@ def uploadImage(request):
 
     if request.method == 'POST':
         if request.is_ajax():
-            albumpath = settings.MEDIA_URL + '/images/contentImages/'
+            albumpath = 'home/AdastraRepo/media/images/contentImages/'
             link = request.POST.get('link')
             file = request.FILES.getlist('file')[0]
             path = albumpath + file.name
@@ -112,7 +112,7 @@ def uploadImage(request):
 
 
 def index(request, site=''):  # Loads the index template, all subsites are routed to index
-    return render_to_response('index.html')
+    return render_to_response('index.html', context_instance=RequestContext(request))
 
 
 @csrf_protect
@@ -280,9 +280,10 @@ def removeFromAlbum(request):  # remove a picture from an album.
 @csrf_protect
 def view_logout(request):  # log out from the site
     logout(request)
-    return render_to_response('index.html')
+    return render_to_response('index.html', context_instance=RequestContext(request))
 
 
+@csrf_protect
 def checkLoggedIn(request):  # confirm that the user is still active.
     if request.user.is_authenticated():
         string = '{"loggedIn": "True", "firstName": "' + request.user.first_name + '", "lastName": "' + request.user.last_name + '"}'
@@ -292,6 +293,7 @@ def checkLoggedIn(request):  # confirm that the user is still active.
     return HttpResponse(simplejson.dumps(input_map), mimetype='application/javascript')
 
 
+@csrf_protect
 def siteContent(request, site=''):  # returns  the site content in json form
     item = Content.objects.get(site=site)
     string = '{"admin": false, "siteContent": "' + item.text
@@ -302,6 +304,7 @@ def siteContent(request, site=''):  # returns  the site content in json form
     return HttpResponse(simplejson.dumps(input_map), mimetype='application/javascript')
 
 
+@csrf_protect
 def siteAdminContent(request, site=''):  # returns the site content in json form with admin set to true
     item = Content.objects.get(site=site)
     string = '{"admin": true, "siteContent": "' + item.text
@@ -312,6 +315,7 @@ def siteAdminContent(request, site=''):  # returns the site content in json form
     return HttpResponse(simplejson.dumps(input_map), mimetype='application/javascript')
 
 
+@csrf_protect
 def fileLoader(request, site=''):  # returns the content of the albums, listing all pictures in json.
     imageAlbum = Content.objects.get(site=site).text.split(', ')
     string = '[{"title": "' + imageAlbum.pop(0) + '"}, {"path": "' + settings.MEDIA_URL + 'images/' + site + '/"}, '
@@ -322,6 +326,7 @@ def fileLoader(request, site=''):  # returns the content of the albums, listing 
     return HttpResponse(simplejson.dumps(input_map), mimetype='application/javascript')
 
 
+@csrf_protect
 def menu(request):  # returns a json with all menus and dropowns.
     if request.is_ajax():
         string = '['

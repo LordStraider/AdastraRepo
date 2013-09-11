@@ -1,0 +1,27 @@
+
+#name p {
+	margin-top: 0;
+  	font-size: 25px; 
+	font-weight: bold;
+	padding: 150px 50px 20px;
+}
+
+#logo img {
+	position:absolute;
+	z-index: -1;
+	height: 250px;
+	width: 100%;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+#picture img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
