@@ -32,10 +32,8 @@ function loadContent(site) {
 
 function changePicture(src, alt) {
     if (src !== undefined) {
-        //var file = src.split('http://192.168.1.42');
-        var file = src.split('localhost:8000');
-        console.log(file);
-        $('#picture').html('<img src="' + file[1] + '" alt="' + alt + '"><p>Beskrivning: ' + alt + '</p>');
+        var file = src.split('media');
+        $('#picture').html('<img src="/media' + file[1] + '" alt="' + alt + '"><p>Beskrivning: ' + alt + '</p>');
     }
 }
 
@@ -74,7 +72,6 @@ function loadFileContent(site) {
 
 var prev;
 function reloadPage(e, preAdress, loggedIn) {
-    console.log(e.target.href);
     if (e.target.href !== undefined) {
         e.stopImmediatePropagation();
 
