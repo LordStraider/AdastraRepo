@@ -13,27 +13,28 @@ function submitText(form) {
     var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n");
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
-    var string = '';
+    var obj = new Object();
+
     if (isAlbum) {
-        string = '{"text": "' + text.substring(0,199) + '", "site": "' +
-        site + '", "isAlbum": ' + isAlbum + '}';
+        obj.text = text.substring(0,199);
+        obj.site = site;
+        obj.isAlbum = isAlbum;
     } else {
-        string = '{"text": "' + text + '", "site": "' + site + '", "isAlbum": ' + isAlbum;
+        obj.text = text;
+        obj.site = site;
+        obj.isAlbum = isAlbum;
         var lists = $('.submitList');
         if (lists.length > 0) {
-            string += ', "extra": {';
-
+            var extra = '';
             $(lists).each(function(i, item) {
-                string += item.innerHTML;
-                string += ', ';
+                extra += item.innerHTML + ',';
             });
-
-            string = string.slice(0,-2);
-            string += '}';
+            obj.extra = extra.slice(0, -2);
         }
-
-        string += '}';
     }
+
+    var string = JSON.stringify(obj);
+    console.log(string);
 
     $.ajax({
         type: 'POST',
@@ -56,7 +57,7 @@ function loadAdminContent(site) {
         var subSite = site.split('/');
         content.push('<div><form class="mainContent" id="newSiteContent" action="javascript:submitText(newSiteContent)">' +
             '<input type="hidden" name="site" value="' + subSite[subSite.length - 2] + '"/>' +
-            '<textarea id="textArea" cols="100" rows="'+ data.siteContent.length / 100 + '" name="newText">' +
+            '<textarea id="textArea" cols="100" rows="'+ data.siteContent.length / 10 + '" name="newText">' +
             data.siteContent + '</textarea><br/>' +
             '<input type="checkbox" id="check" name="isAlbum" value="isAlbum"/><label for="check">Is it an album</label>' +
             '<br/><input type="submit" value="Submit"/></form><div id="result"></div>' +
@@ -164,7 +165,7 @@ function submitList() {
     });
     list = list.slice(0,-3);
 
-    $('.mainContent').append('<div class="newList submitList">"_Extra_List_Linker_' + id + '": "' + list + '"</div>');
+    $('.mainContent').append('<div class="newList submitList">_Extra_List_Linker_' + id + ':' + list + '</div>');
     $('textArea').append('_Extra_List_Linker_' + id);
     $('#newStuff').html('Place the link where you want it and press submit.');
 }

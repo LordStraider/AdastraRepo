@@ -96,7 +96,7 @@ def uploadImage(request):
                 destination.write(chunk)
             destination.close()
 
-            newString = link + ':' + path + '_-_100_-_100'
+            newString = link + ':media/images/contentImages/' + file.name + '_-_100_-_100'
 
             obj = Content.objects.get(site=request.POST.get('site'))
             obj.text += link
@@ -183,8 +183,7 @@ def submitContent(request):  # Updates the content of a page.
 
     newString = ''
     if js.get('extra'):
-        for string in js.get('extra').items():
-            newString = newString + ',' + string[0] + ':' + string[1]  # Manager for pictures and lists
+        newString += js.get('extra')
 
         if obj.extra == ',':
             obj.extra = newString[1:]
