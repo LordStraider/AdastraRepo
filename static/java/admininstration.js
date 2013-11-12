@@ -10,7 +10,9 @@ function createLink(text) {
 }
 
 function submitText(form) {
-    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n");
+    //console.log(form.newText.value);
+    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/:/g,"\\:");
+    //console.log(text);
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
     var obj = new Object();
@@ -34,7 +36,7 @@ function submitText(form) {
     }
 
     var string = JSON.stringify(obj);
-    console.log(string);
+    //console.log(string);
 
     $.ajax({
         type: 'POST',

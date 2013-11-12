@@ -1,7 +1,8 @@
 function getSiteString() {
     var site = window.location.href.split('/');
-    if (site.length <= 4)
+    if (site.length <= 4) {
         return "siteContent/Hem";
+    }
     return site[site.length - 2];
 }
 
@@ -13,7 +14,7 @@ function loadMenu(loggedIn) {
             menu.push('<li value="' + i + '" id="' + data[i].linked + '"><a href="/' + data[i].linked + '/">' + data[i].menu + '</a>');
             if (data[i].subs.length > 0) {
                 menu.push('<ul class="' + data[i].linked + '">');
-
+                
                 $.each (data[i].subs, function (j) {
                     menu.push('<li id="' + data[i].subs[j].linked + '"><a href="/' + data[i].linked + '/' + data[i].subs[j].linked + '/">' + data[i].subs[j].sub + '</a></li>');
                 });
@@ -28,10 +29,8 @@ function loadMenu(loggedIn) {
         }
 
         $('<ul/>', {
-            id: "menu",
-            class: "outer-ul",
-            html: menu.join('')
-        }).appendTo('#jquerymenu');
+            id: "menu", html: menu.join('')
+        }).attr('class', "outer-ul").appendTo('#jquerymenu');
 
         $( "#menu" ).menu({ position: { my: "left top", at: "top+25" } });
     });
