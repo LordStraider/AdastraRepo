@@ -87,7 +87,7 @@ def uploadImage(request):
 
     if request.method == 'POST':
         if request.is_ajax():
-            albumpath = 'home/AdastraRepo/media/images/contentImages/'
+            albumpath = 'media/images/contentImages/'
             link = request.POST.get('link')
             file = request.FILES.getlist('file')[0]
             path = albumpath + file.name
@@ -98,6 +98,7 @@ def uploadImage(request):
 
             newString = link + ':media/images/contentImages/' + file.name + '_-_100_-_100'
 
+            print request.POST.get('site')
             obj = Content.objects.get(site=request.POST.get('site'))
             obj.text += link
             if obj.extra == ',':
@@ -169,7 +170,8 @@ def submitContent(request):  # Updates the content of a page.
     if not request.user.is_authenticated() and request.user.is_staff:
         return render_to_response('login.html', context_instance=RequestContext(request))
 
-    js = simplejson.loads(request.POST.items()[0][0])  # Read ajax data
+    print request.POST.items()
+    js = simplejson.loads(request.POST.items()[0][0].encode('utf-8'))  # Read ajax data
     text = js.get('text')
     site = js.get('site')
     album = js.get('isAlbum')
