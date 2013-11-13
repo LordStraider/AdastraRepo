@@ -10,7 +10,7 @@ function createLink(text) {
 }
 
 function submitText(form) {
-    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/:/g,"\\:").replace(/;/g,"\\:");
+    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(';',':');
 
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
