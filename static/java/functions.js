@@ -4,11 +4,7 @@ function loadContent(site) {
         var list = [];
         var re = [];
 
-        var html = '';
-        $(data.siteContent.split('\r\n')).each(function(key, text) {
-            html += text + '<br/>';
-        });
-
+        var html = data.siteContent.replace(/\r\n/g, '<br/>');
         var html2 = '';
         $(html.split('[img]')).each(function(key, text) {
             if (key === 0)
