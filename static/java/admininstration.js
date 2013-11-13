@@ -6,14 +6,11 @@ function createLink(text) {
     text = text.replace(/Ä/g, 'A');
     text = text.replace(/Ö/g, 'O');
     text = text.replace(/ /g,'');
-    console.log(text);
     return text;
 }
 
 function submitText(form) {
-    //console.info(form.newText.value);
-    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n");//.replace(/:/g,"\\:");
-    console.log(text);
+    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/:/g,"\\:").replace(/;/g,"\\:");
 
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
@@ -61,7 +58,7 @@ function loadAdminContent(site) {
         var subSite = site.split('/');
         content.push('<div><form class="mainContent" id="newSiteContent" action="javascript:submitText(newSiteContent)">' +
             '<input type="hidden" name="site" value="' + subSite[subSite.length - 2] + '"/>' +
-            '<textarea id="textArea" cols="100" rows="'+ data.siteContent.length / 10 + '" name="newText">' +
+            '<textarea id="textArea" cols="100" rows="40" name="newText">' +
             data.siteContent + '</textarea><br/>' +
             '<input type="checkbox" id="check" name="isAlbum" value="isAlbum"/><label for="check">Is it an album</label>' +
             '<br/><input type="submit" value="Submit"/></form><div id="result"></div>' +
@@ -161,7 +158,6 @@ function submitList() {
 }
 
 function submitSubMenu(subMenu) {
-    console.log("waie");
     var link = createLink(subMenu.menu.value);
     var text = subMenu.menu.value;
     var site = subMenu.site.value;
