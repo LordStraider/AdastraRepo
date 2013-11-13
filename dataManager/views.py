@@ -85,12 +85,16 @@ def uploadImage(request):
     if not request.user.is_authenticated() and request.user.is_staff:
         return render_to_response('login.html', context_instance=RequestContext(request))
 
+    import re
+    chars = [',', ':', '!', ';', '?']
+
     if request.method == 'POST':
         if request.is_ajax():
-            albumpath = 'media/images/contentImages/'
+            albumpath = 'home/AdastraRepo/media/images/contentImages/'
             file = request.FILES.getlist('file')[0]
-            path = albumpath + file.name
-            destination = open(path, 'w+b')
+            path = '%s' % (albumpath + re.sub('[%s]' % ''.join(chars), '', file.name))
+            #path = albumpath + file.name
+            destination = open(path, 'w')
             for chunk in file.read():
                 destination.write(chunk)
             destination.close()
