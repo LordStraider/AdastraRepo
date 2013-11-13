@@ -6,13 +6,15 @@ function createLink(text) {
     text = text.replace(/Ä/g, 'A');
     text = text.replace(/Ö/g, 'O');
     text = text.replace(/ /g,'');
+    console.log(text);
     return text;
 }
 
 function submitText(form) {
-    //console.log(form.newText.value);
-    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/:/g,"\\:");
-    //console.log(text);
+    //console.info(form.newText.value);
+    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n");//.replace(/:/g,"\\:");
+    console.log(text);
+
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
     var obj = new Object();
@@ -95,10 +97,9 @@ function loadAdminContent(site) {
                         });
 
                 } else if (e.currentTarget.value === "addImage") {
-                    var id = $('.newList').length;
                     $('#newStuff').html('<form id="uploadFile" enctype="multipart/form-data"action="javascript:uploadImage()">'+
-                        '<input type="hidden" id="getSite" value="' + site.split('/')[3] + '" name="site"/><input type="hidden" '+
-                        'value="_Extra_Image_Linker_' + id + '" name="link"/><input id="file" value="Select file" type="file" '+
+                        '<input type="hidden" id="getSite" value="' + site.split('/')[3] + '" name="site"/>'+
+                        '<input id="file" value="Select file" type="file" '+
                         'name="file"/><input type="submit"/></form>');
                 }
             });
@@ -125,7 +126,6 @@ function uploadImage() {
         return false;
     }
 
-    var id = $('.newList').length;
     var formData = new FormData($('#uploadFile')[0]);
 
     $.ajax({
@@ -137,19 +137,7 @@ function uploadImage() {
         },
 
         success: function(data){
-            arrData = data.split(':');
-            file = arrData[1].split('_-_');
-            site = $('#getSite')[0].value;
-            $('#newStuff').html('<img name="' + arrData[0] + '" id="resizable" class="ui-widget-content" height="' +
-                file[1] + '" width="' + file[2] + '" src="/' + file[0] + '"/>' +
-                '<button id="submitSize">Submit size</button>');
-            $('#submitSize')
-                .button()
-                .click(function() {
-                    setSize(site, file[0]);
-                });
-            $('#resizable').resizable();
-            $('textArea').append('_Extra_Image_Linker_' + id);
+            $('textArea').append('[img]' + file.name + ',200,200[/img]');
         },
 
         data: formData,
@@ -173,9 +161,11 @@ function submitList() {
 }
 
 function submitSubMenu(subMenu) {
+    console.log("waie");
     var link = createLink(subMenu.menu.value);
     var text = subMenu.menu.value;
     var site = subMenu.site.value;
+    alert(link);
 
     $.ajax({
         type: "POST",

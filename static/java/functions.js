@@ -3,27 +3,20 @@ function loadContent(site) {
         var content = ['<br/>'];
         var list = [];
         var re = [];
-        if (data.extra !== undefined) {
-            $(data.extra.split(',')).each(function(key, text) {
-                var arr = text.split(':');
-                re.push( new RegExp(arr[0], 'g') );
-                if (arr[0].search('List_Linker') !== -1) {
-                    list.push( '<div class="list"><ul><li>' + arr[1].replace(/_-_/g, '</li><li>') +
-                        '</li></ul></div>' );
-                } else {
-                    size = arr[1].split('_-_');
-                    list.push( '<div class="image"><img src="/' + size[0] + '" height="' +
-                        size[1] + '" width="' + size[2] + '"/></div>' );
-                }
-            });
-        }
 
-        $(data.siteContent.split('\n')).each(function(key, text) {
-            $(re).each(function (i, r) {
-                text = text.replace(r,list[i]);
-            });
-            content.push('<br/>' + text);
+        var html = '';
+        $(data.siteContent.split('\r\n')).each(function(key, text) {
+            html += text + '<br/>';
         });
+
+        var html2 = '';
+        $(html.split('[img]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<div class="image"><img src="/media/images/contentImages/' + text.replace(',', '" width="').replace(',', '" height="').replace('[/img]', '" /></div>');
+        });
+        content.push(html2);
 
         content.push('<div style="clear:both;"></div>');
         $('#siteContent').html(content.join(''));

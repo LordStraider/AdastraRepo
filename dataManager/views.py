@@ -37,7 +37,7 @@ def uploadFiles(request):
 
             for file in request.FILES.getlist('files[]'):  # For each file in the request, open/create it and write the content.
                 path = '%s' % (albumpath + re.sub('[%s]' % ''.join(chars), '', file.name))
-                print path
+                #print path
                 destination = open(path, 'w+b')
                 for chunk in file.read():
                     destination.write(chunk)
@@ -88,7 +88,6 @@ def uploadImage(request):
     if request.method == 'POST':
         if request.is_ajax():
             albumpath = 'media/images/contentImages/'
-            link = request.POST.get('link')
             file = request.FILES.getlist('file')[0]
             path = albumpath + file.name
             destination = open(path, 'w+b')
@@ -96,18 +95,13 @@ def uploadImage(request):
                 destination.write(chunk)
             destination.close()
 
-            newString = link + ':media/images/contentImages/' + file.name + '_-_100_-_100'
-
-            print request.POST.get('site')
+            #print request.POST.get('site')
             obj = Content.objects.get(site=request.POST.get('site'))
-            obj.text += link
-            if obj.extra == ',':
-                obj.extra = newString
-            else:
-                obj.extra += ',' + newString
+            #print '[img]' + file.name + ',200,200[/img]'
+            obj.text += '[img]' + file.name + ',200,200[/img]'
             obj.save()
 
-            return HttpResponse(newString)
+            return HttpResponse('success')
         return HttpResponse('{"error": "not ajax."}')
     return HttpResponse('{"error": "not post."}')
 
@@ -170,7 +164,7 @@ def submitContent(request):  # Updates the content of a page.
     if not request.user.is_authenticated() and request.user.is_staff:
         return render_to_response('login.html', context_instance=RequestContext(request))
 
-    print request.POST.items()
+    #print request.POST.items()[0]
     js = simplejson.loads(request.POST.items()[0][0].encode('utf-8'))  # Read ajax data
     text = js.get('text')
     site = js.get('site')
