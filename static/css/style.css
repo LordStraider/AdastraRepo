@@ -9,6 +9,14 @@ body{
 	font-size: 14px;
 }
 
+#siteContent {
+	border-color: #101010;
+	border-radius: 1px;
+	box-shadow: 5px 5px 3px #888888;
+	background-color: #FFFFFF;
+	padding: 15px;
+}
+
 .mainContent {
 	float: left;
 	width: 100%;
