@@ -1,6 +1,6 @@
 function loadContent(site) {
     $.getJSON(site, function(data) {
-        var content = ['<br/>'];
+        var content = [''];
         var list = [];
         var re = [];
 
