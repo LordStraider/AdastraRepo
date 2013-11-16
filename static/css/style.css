@@ -50,6 +50,7 @@ body{
 }
 
 #jquerymenu {
+	height: auto;
 }
 
 .ui-menu {
