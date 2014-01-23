@@ -29,9 +29,9 @@ function loadMenu(loggedIn) {
         }
 
         $('<ul/>', {
-            id: "menu", html: menu.join('')
-        }).attr('class', "outer-ul").appendTo('#jquerymenu');
+            html: menu.join('')
+        }).appendTo('#menu3');
 
-        $( "#menu" ).menu({ position: { my: "left top", at: "top+25" } });
+        //$( "#menu" ).menu({ position: { my: "left top", at: "top+25" } });
     });
 }

@@ -58,12 +58,14 @@ function loadAdminContent(site) {
         var subSite = site.split('/');
         content.push('<div><form class="mainContent" id="newSiteContent" action="javascript:submitText(newSiteContent)">' +
             '<input type="hidden" name="site" value="' + subSite[subSite.length - 2] + '"/>' +
-            '<textarea id="textArea" cols="100" rows="40" name="newText">' +
+            '<textarea id="textArea" cols="140" rows="30" name="newText">' +
             data.siteContent + '</textarea><br/>' +
             '<input type="checkbox" id="check" name="isAlbum" value="isAlbum"/><label for="check">Is it an album</label>' +
             '<br/><input type="submit" value="Submit"/></form><div id="result"></div>' +
             '<div id="newStuff"></div></div>' +
-            '<div id="extra"><button value="addList">Add list</button>&nbsp;&nbsp;<button value="addImage">Add image</button></div>');
+            '<div id="extra"><button value="addList">Add list</button>&nbsp;&nbsp;<button value="addImage">Add image</button></div>' +
+            '<div>[b]<b>Bold text</b>[/b]<br/>[i]<i>Italic text</i>[/i]<br/>[a]<a href="http://corren.se">http://länken.com,' +
+            'Beskrivning av länken som kommer synas på hemsidan</a>[/a]<br/><h1>[h1]En rubrik[/h1]</h1><br/><h2>[h2]En annan rubrik[/h2]</h2></div>');
 
         $('#siteContent').html(content.join(''));
 

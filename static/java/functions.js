@@ -1,8 +1,6 @@
 function loadContent(site) {
     $.getJSON(site, function(data) {
         var content = [''];
-        var list = [];
-        var re = [];
 
         var html = data.siteContent.replace(/\r\n/g, '<br/>');
         var html2 = '';
@@ -13,9 +11,66 @@ function loadContent(site) {
                 html2 += '<div class="image"><img src="/media/images/contentImages/' + text.replace(',', '" width="').replace(',', '" height="').replace('[/img]', '" /></div>');
         });
         content.push(html2);
+        html = content.join('');
+        content = [''];
 
+        html2 = '';
+        $(html.split('[b]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<b>' + text.replace('[/b]', '</b>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
+        $(html.split('[i]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<i>' + text.replace('[/i]', '</i>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
+        $(html.split('[h1]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<h1>' + text.replace('[/h1]', '</h1>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
+        $(html.split('[h2]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<h2>' + text.replace('[/h2]', '</h2>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
+        $(html.split('[a]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<a href="' + text.replace(',', '">').replace('[/a]', '</a>');
+        });
+        content.push(html2);
         content.push('<div style="clear:both;"></div>');
-        $('#siteContent').html(content.join(''));
+        html = content.join('');
+        content = [''];
+
+        $('#siteContent').html(html);
     });
 }
 
