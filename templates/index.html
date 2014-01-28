@@ -39,9 +39,11 @@
         loadMenu(false);
 
         /*Manage menu mouse over and click events, update content */
-        $("#jquerymenu").on("click", function(e) {
+        $("#menu3").on("click", function(e) {
             reloadPage(e, '', false);
-            return false;
+            e.preventDefault();
+            //e.stopImmediatePropagation();
+            //return false;
         });
 
         /*Update info on the user if logged in, check with server if the user is still active */
@@ -168,27 +170,11 @@
 
             <div id="login"></div>
         </div>
-<div id="menu3">
-<!--<ul>
-<li><a href="index.html">Home</a><ul>
-<li><a href="aboutus.html">About Us</a><li><a href="aboutus.html">About Us</a><li><a href="aboutus.html">About Us</a>
-</ul></li>
-<li><a href="aboutus.html">About Us</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="contactus.html">Contact Us</a></li>
-</ul>-->
-</div>
-<!--<div id="menu2">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="aboutus.html">About Us</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="contactus.html">Contact Us</a></li>
-</ul>
-</div>-->
+        
+        <div id="menu3"></div>
         <hr>
 
-        <div id='siteContent'><br/>Välkommen till Ad Astra Hästcenter!<br/>
+        <div id='siteContent'>Välkommen till Ad Astra Hästcenter!<br/>
 Lättast kontaktar du oss med din förfrågan via mail. <br/>
 sally.adastra@gmail.com <br/>
 <br/>
@@ -206,7 +192,7 @@ Du har en gammal webläsare, för att se denna sida behöver du en modernare web
         <div class='footer'>
             <hr>
             <div id="footerpic">
-                <img src="/media/footer.png" alt="Ad Astra Hästcenter" width="100", height="100">
+                <img src="/media/footer.png" alt="Ad Astra Hästcenter" width="100" height="100">
             </div>
             <div id="kontakt">
                 <p><b>Kontakt</b></p>

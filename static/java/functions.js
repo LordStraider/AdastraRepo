@@ -117,13 +117,11 @@ function loadFileContent(site) {
 var prev;
 function reloadPage(e, preAdress, loggedIn) {
     if (e.target.href !== undefined) {
-        e.stopImmediatePropagation();
-
-        if (prev !== undefined)
-            prev.removeClass("cssmenu-active");
+        /*if (prev !== undefined)
+            prev.removeClass("cssmenu-active");*/
         prev = $(e.target.parentElement);
-        prev.addClass("cssmenu-active");
-
+        //prev.addClass("cssmenu-active");
+        
         var href = e.target.href.split('/');
         if (href[href.length - 2] == 'fileLoader') {
             if (loggedIn) {
@@ -133,13 +131,14 @@ function reloadPage(e, preAdress, loggedIn) {
             }
         } else {
             if (loggedIn) {
+                console.log("loading " + preAdress +'/siteContent/' + href[href.length - 2] + '/');
                 loadAdminContent(preAdress + '/siteContent/' + href[href.length - 2] + '/');
             } else {
                 loadContent(preAdress + '/siteContent/' + href[href.length - 2] + '/');
             }
         }
-        return false;
     }
+    return false;
 }
 
 function adjustStyle(width) {

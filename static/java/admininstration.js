@@ -137,6 +137,7 @@ function uploadImage() {
 
         success: function(data){
             $('textArea').append('[img]' + file.name + ',200,200[/img]');
+            $('#result').html('<span>Successfully image!</span>');
         },
 
         data: formData,
@@ -241,7 +242,7 @@ function sendReOrder() {
 
 function loadMenuManager() {
     $.getJSON('/menu/', function(data) {
-        var manager = ['<br/><ul class="menuManager">'];
+        var manager = ['<ul class="menuManager">'];
         var id = 0;
 
         $.each (data, function (i) {
@@ -258,7 +259,7 @@ function loadMenuManager() {
             }
             manager.push('<li><form id="subMenu' + id + '" action="javascript:submitSubMenu(subMenu'+id+')">'+
                 '<input type="hidden" name="site" value="' + data[i].linked + '"/><input type="text" name="menu" value="'+
-                'New sub menu"/><input type="submit" value="Add"/></form></li></ul></li></li>');
+                'New sub menu"/><input type="submit" value="Add"/></form></li></ul></li>');
             id++;
         });
 
@@ -367,7 +368,7 @@ function adminloadFileContent(site) {
         var title = data.shift().title;
         var path = data.shift().path;
         var cnt = 0;
-        var content = ['</br><form id="newAlbumContent" enctype="multipart/form-data" action="javascript:submitAlbum(newAlbumContent)">'+
+        var content = ['<form id="newAlbumContent" enctype="multipart/form-data" action="javascript:submitAlbum(newAlbumContent)">'+
             'Title: <input type="text" name="title" value="' + title + '"/><ul id="descriptionlist">'];
 
         $.each (data, function (i) {
