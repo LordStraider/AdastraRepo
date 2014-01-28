@@ -175,7 +175,7 @@ function submitSubMenu(subMenu) {
             if (result === 'True') {
                 $('.menuManager .' + site).append('<li id="' + link + '">' + text + '&nbsp;&nbsp;&nbsp;&nbsp;<img id="sub:' + link  +
                     '" src="/static/images/styles/delete.jpg" height="14px" alt=", click to delete"/></li>');
-                $('#menu .' + site).append('<li id="' + link + '"><a href="/' + site + '/' + link + '/">' + text + '</a></li>');
+                $('#menu .' + site).append('<li id="' + link + '"><a href="/' + site + '/' + link + '">' + text + '</a></li>');
                 $( "#menu" ).menu({ position: { my: "left top", at: "top+25" } });
                 $('#result').html('<span>Successfully added menu ' + text + '!</span>');
                 setListener();
