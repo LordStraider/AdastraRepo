@@ -122,16 +122,16 @@ function reloadPage(e, preAdress, loggedIn) {
         var href = e.target.href.split('/');
         if (href[href.length - 2] == 'fileLoader') {
             if (loggedIn) {
-                adminloadFileContent(preAdress + '/fileLoader/' + href[href.length - 3]);
+                adminloadFileContent(preAdress + '/fileLoader/' + href[href.length - 3] + '/');
             } else {
-                loadFileContent('/fileLoader/' + href[href.length - 3]);
+                loadFileContent('/fileLoader/' + href[href.length - 3] + '/');
             }
         } else {
             if (loggedIn) {
-                console.log("loading " + preAdress +'/siteContent/' + href[href.length - 2]);
-                loadAdminContent(preAdress + '/siteContent/' + href[href.length - 2]);
+                console.log("loading " + preAdress +'/siteContent/' + href[href.length - 2] + '/');
+                loadAdminContent(preAdress + '/siteContent/' + href[href.length - 2] + '/');
             } else {
-                loadContent(preAdress + '/siteContent/' + href[href.length - 2]);
+                loadContent(preAdress + '/siteContent/' + href[href.length - 2] + '/');
             }
         }
     }
