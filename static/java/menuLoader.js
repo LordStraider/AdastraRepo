@@ -11,12 +11,12 @@ function loadMenu(loggedIn) {
         var menu = [];
 
         $.each (data, function (i) {
-            menu.push('<li value="' + i + '" id="' + data[i].linked + '"><a href="/' + data[i].linked + '">' + data[i].menu + '</a>');
+            menu.push('<li value="' + i + '" id="' + data[i].linked + '"><a href="/' + data[i].linked + '/">' + data[i].menu + '</a>');
             if (data[i].subs.length > 0) {
                 menu.push('<ul class="' + data[i].linked + '">');
                 
                 $.each (data[i].subs, function (j) {
-                    menu.push('<li id="' + data[i].subs[j].linked + '"><a href="/' + data[i].linked + '/' + data[i].subs[j].linked + '">' + data[i].subs[j].sub + '</a></li>');
+                    menu.push('<li id="' + data[i].subs[j].linked + '"><a href="/' + data[i].linked + '/' + data[i].subs[j].linked + '/">' + data[i].subs[j].sub + '</a></li>');
                 });
 
                 menu.push('</ul>');
