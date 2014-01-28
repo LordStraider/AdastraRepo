@@ -128,7 +128,7 @@ function reloadPage(e, preAdress, loggedIn) {
             }
         } else {
             if (loggedIn) {
-                console.log("loading " + preAdress +'/siteContent/' + href[href.length - 2] + '/');
+                //console.log("loading " + preAdress +'/siteContent/' + href[href.length - 2] + '/');
                 loadAdminContent(preAdress + '/siteContent/' + href[href.length - 2] + '/');
             } else {
                 loadContent(preAdress + '/siteContent/' + href[href.length - 2] + '/');

@@ -9,21 +9,36 @@ function createLink(text) {
     return text;
 }
 
+function linkify(text){
+    if (text) {
+        text = text.replace(
+            /((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
+            function(url){
+                var full_url = url;
+                if (!full_url.match('^https?:\/\/')) {
+                    full_url = 'http://' + full_url;
+                }
+                return '<a href="' + full_url + '">' + url + '</a>';
+            }
+        );
+    }
+    return text;
+}
+
 function submitText(form) {
     var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/;/g,':');
-
+    //console.log(encodeURIComponent(text));
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
     var obj = new Object();
 
+    obj.site = site;
+    obj.isAlbum = isAlbum;
+    
     if (isAlbum) {
         obj.text = text.substring(0,199);
-        obj.site = site;
-        obj.isAlbum = isAlbum;
     } else {
-        obj.text = text;
-        obj.site = site;
-        obj.isAlbum = isAlbum;
+        obj.text = encodeURIComponent(text);
         var lists = $('.submitList');
         if (lists.length > 0) {
             var extra = '';
@@ -40,6 +55,7 @@ function submitText(form) {
     $.ajax({
         type: 'POST',
         url: 'submitContent/',
+        site: site,
         data: string,
 
         success: function(result) {

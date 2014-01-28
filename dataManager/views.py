@@ -168,7 +168,6 @@ def submitContent(request):  # Updates the content of a page.
     if not request.user.is_authenticated() and request.user.is_staff:
         return render_to_response('login.html', context_instance=RequestContext(request))
 
-    #print request.POST.items()[0]
     js = simplejson.loads(request.POST.items()[0][0].encode('utf-8'))  # Read ajax data
     text = js.get('text')
     site = js.get('site')
@@ -177,6 +176,7 @@ def submitContent(request):  # Updates the content of a page.
         dropDown = DropDown.objects.get(link=site)  # did we change the site to an album?
         dropDown.hasFiles = True
         dropDown.save()
+
 
     obj = Content.objects.get(site=site)
     obj.text = text
