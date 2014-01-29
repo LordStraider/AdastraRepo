@@ -1,3 +1,10 @@
+#menu3 {
+	height: 185px;
+	text-align: center;
+	font-weight: bold;
+    font-size: 16px;
+    text-shadow: 4px 3px 4px #C0C0C0;
+}
 
 #name p {
 	margin-top: 0;

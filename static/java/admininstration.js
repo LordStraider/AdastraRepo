@@ -9,25 +9,8 @@ function createLink(text) {
     return text;
 }
 
-function linkify(text){
-    if (text) {
-        text = text.replace(
-            /((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
-            function(url){
-                var full_url = url;
-                if (!full_url.match('^https?:\/\/')) {
-                    full_url = 'http://' + full_url;
-                }
-                return '<a href="' + full_url + '">' + url + '</a>';
-            }
-        );
-    }
-    return text;
-}
-
 function submitText(form) {
     var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/;/g,':');
-    //console.log(encodeURIComponent(text));
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
     var obj = new Object();
@@ -36,14 +19,14 @@ function submitText(form) {
     obj.isAlbum = isAlbum;
     
     if (isAlbum) {
-        obj.text = text.substring(0,199);
+        obj.text = encodeURIComponent(text.substring(0,199));
     } else {
         obj.text = encodeURIComponent(text);
         var lists = $('.submitList');
         if (lists.length > 0) {
             var extra = '';
             $(lists).each(function(i, item) {
-                extra += item.innerHTML + ',';
+                extra += encodeURIComponent(item.innerHTML) + ',';
             });
             obj.extra = extra.slice(0, -2);
         }
@@ -55,7 +38,6 @@ function submitText(form) {
     $.ajax({
         type: 'POST',
         url: 'submitContent/',
-        site: site,
         data: string,
 
         success: function(result) {
@@ -64,9 +46,17 @@ function submitText(form) {
             } else {
                 $('#result').html("<span>Successfully updated info!</span>");
             }
+        },
+
+        error: function(result) {
+            console.log(result.responseText);
+            alert('Något gick fel, antagligen la du in ett ogiltigt tecken.. \n\nresult: ' + result.responseText);
         }
     });
 }
+
+//Expecting , delimiter: line 1 column 243 (char 242)
+//http://www.youtube.com/watch?v=rIn94rqJqMg\r\n\r\n\r\n''¨€€q#%?='^''~~++!#%=&(€)/(%€! %22%22%22/><b>bold</b><<>> %22 *%!#€&%€/()=?=?=!?%22=#€?%22=#€?=!%22?#€='^¨~$©@£$∞§|∞[]≈"#&/%€(&)/ˆ‡˜‡¥¶¢¥\¢{‰}\¶≠{\
 
 function loadAdminContent(site) {
     $.getJSON(site, function(data) {
@@ -81,7 +71,9 @@ function loadAdminContent(site) {
             '<div id="newStuff"></div></div>' +
             '<div id="extra"><button value="addList">Add list</button>&nbsp;&nbsp;<button value="addImage">Add image</button></div>' +
             '<div>[b]<b>Bold text</b>[/b]<br/>[i]<i>Italic text</i>[/i]<br/>[a]<a href="http://corren.se">http://länken.com,' +
-            'Beskrivning av länken som kommer synas på hemsidan</a>[/a]<br/><h1>[h1]En rubrik[/h1]</h1><br/><h2>[h2]En annan rubrik[/h2]</h2></div>');
+            'Beskrivning av länken som kommer synas på hemsidan</a>[/a]<br/>[a]<a href="mailto:sally.karlsson@gmail.com">mailto:' +
+            'sally.karlsson@gmail.com, mail to sally.karlsson@gmail.com</a>[/a] Direktlänk för att skicka mail till någon..<br/>' +
+            '<h1>[h1]En rubrik[/h1]</h1><br/><h2>[h2]En annan rubrik[/h2]</h2></div>');
 
         $('#siteContent').html(content.join(''));
 
@@ -177,7 +169,7 @@ function submitList() {
 }
 
 function submitSubMenu(subMenu) {
-    var link = createLink(subMenu.menu.value);
+    var link = encodeURIComponent(createLink(subMenu.menu.value));
     var text = subMenu.menu.value;
     var site = subMenu.site.value;
     alert(link);
@@ -203,7 +195,7 @@ function submitSubMenu(subMenu) {
 }
 
 function submitMenu(menu) {
-    var link = createLink(menu.menu.value);
+    var link = encodeURIComponentcreateLink(menu.menu.value);
     var text = menu.menu.value;
 
     $.ajax({

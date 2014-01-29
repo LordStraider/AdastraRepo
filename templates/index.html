@@ -8,6 +8,7 @@
 <link id="size-stylesheet" rel="stylesheet" type="text/css" href="{% static "css/wide.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/gallery.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/dropDown.css" %}"/>
+<link id="menu-stylesheet" rel="stylesheet" type="text/css" href="{% static "css/menuIE.css" %}"/>
 <script type="text/javascript" src="{% static "java/js/jquery-1.9.1.js" %}"></script>
 <script type="text/javascript" src="{% static "java/js/jquery-ui-1.10.3.custom.min.js" %}"></script>
 <script type="text/javascript" src="{% static "java/menuLoader.js" %}"></script>
@@ -17,6 +18,8 @@
     /*Gallery variables*/
     var currPic = 0;
     var numbPic = 0;
+
+    var hasIE = false;
 
     /*Gallery function */
     function setPicIndex(x) {
@@ -29,7 +32,39 @@
         }
     }
 
+    function getInternetExplorerVersion() {
+        var rv = -1; 
+        var ua = navigator.userAgent;
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat( RegExp.$1 );
+        } else if (navigator.appName == 'Netscape') {
+            var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat( RegExp.$1 );
+        }
+
+        return rv;
+    }
+    
+
     $(document).ready(function(){
+        $("#displayMenu").click(function(e) {
+            e.preventDefault();
+            $("#menu3").toggle();
+        });
+
+
+        if(getInternetExplorerVersion() != -1) { // IE
+            hasIE = true;
+        } /* else if (navigator.userAgent.indexOf('Chrome') != -1) { // Chrome
+        } else if(navigator.userAgent.indexOf('Safari') != -1) { // Safari
+        } else if (navigator.userAgent.indexOf('Firefox') != -1) { // Firefox
+        } else if (navigator.userAgent.indexOf('Opera') != -1) { // Opera
+        } else { // other
+        }*/
+
         var prev = '';
         var next = '';
         var curr = '';
@@ -40,6 +75,8 @@
 
         /*Manage menu mouse over and click events, update content */
         $("#menu3").on("click", function(e) {
+            $(this).parent("li").toggleClass('hover');
+            console.log($(this));
             reloadPage(e, '', false);
             e.preventDefault();
             //e.stopImmediatePropagation();
@@ -142,9 +179,9 @@
 
 
     $(function() {
-        adjustStyle($(this).width());
+        adjustStyle($(this).width(), hasIE);
         $(window).resize(function() {
-            adjustStyle($(this).width());
+            adjustStyle($(this).width(), hasIE);
         });
     });
 
@@ -171,6 +208,7 @@
             <div id="login"></div>
         </div>
         
+        <div id="displayMenu">Menu</div>
         <div id="menu3"></div>
         <hr>
 
