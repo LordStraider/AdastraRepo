@@ -183,8 +183,8 @@ function submitSubMenu(subMenu) {
             if (result === 'True') {
                 $('.menuManager .' + site).append('<li id="' + link + '">' + text + '&nbsp;&nbsp;&nbsp;&nbsp;<img id="sub:' + link  +
                     '" src="/static/images/styles/delete.jpg" height="14px" alt=", click to delete"/></li>');
-                $('#menu .' + site).append('<li id="' + link + '"><a href="/' + site + '/' + link + '">' + text + '</a></li>');
-                $( "#menu" ).menu({ position: { my: "left top", at: "top+25" } });
+                $('#menu3 .' + site).append('<li id="' + link + '"><a href="/' + site + '/' + link + '">' + text + '</a></li>');
+                $( "#menu3" ).menu({ position: { my: "left top", at: "top+25" } });
                 $('#result').html('<span>Successfully added menu ' + text + '!</span>');
                 setListener();
             } else {
@@ -208,7 +208,7 @@ function submitMenu(menu) {
                 $('.outer-ul').append('<li id="' + link + '"><a href="/' + link + '/">' + text + '</a></li>');
                 $('.menuManager').append('<li id="' + link + '">' + text + '&nbsp;&nbsp;&nbsp;&nbsp;<img id="menu:' + link  +
                     '" src="/static/images/styles/delete.jpg" height="14px" alt=", click to delete"/></li>');
-                $( "#menu" ).menu({ position: { my: "left top", at: "top+25" } });
+                $( "#menu3" ).menu({ position: { my: "left top", at: "top+25" } });
                 $('#result').html('<span>Successfully added ' + text + '!</span>');
                 setListener();
             } else {
@@ -222,7 +222,7 @@ function sendReOrder() {
     var order = '';
     $('.menuManager .sorter').each(function(i) {
         order += this.id + ', ';
-        $('#menu #' + this.id)[0].value = i;
+        $('#menu3 #' + this.id)[0].value = i;
     });
     order = order.slice(0, -2);
     $.ajax({
@@ -232,7 +232,7 @@ function sendReOrder() {
 
         success: function(result){
             if (result === 'True') {
-                var ul = $('#menu');
+                var ul = $('#menu3');
                 var li = ul.children('li');
 
                 li.detach().sort(function(a, b) {
@@ -302,8 +302,8 @@ function setListener() {
                 var link = e.currentTarget.id.split(':')[1];
                 if (result) {
                     $('.menuManager #' + link).remove();
-                    $('#menu #' + link).remove();
-                    $('#menu').menu({ position: { my: 'left top', at: 'top+25' } });
+                    $('#menu3 #' + link).remove();
+                    $('#menu3').menu({ position: { my: 'left top', at: 'top+25' } });
                 } else {
                     $('.menuManager #result').html(', error removing...');
                 }
