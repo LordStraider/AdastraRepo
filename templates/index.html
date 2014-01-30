@@ -8,7 +8,7 @@
 <link id="size-stylesheet" rel="stylesheet" type="text/css" href="{% static "css/wide.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/gallery.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/dropDown.css" %}"/>
-<link id="menu-stylesheet" rel="stylesheet" type="text/css" href="{% static "css/menuIE.css" %}"/>
+<link id="menu-stylesheet" rel="stylesheet" type="text/css" href="{% static "css/menu.css" %}"/>
 <script type="text/javascript" src="{% static "java/js/jquery-1.9.1.js" %}"></script>
 <script type="text/javascript" src="{% static "java/js/jquery-ui-1.10.3.custom.min.js" %}"></script>
 <script type="text/javascript" src="{% static "java/menuLoader.js" %}"></script>
@@ -77,8 +77,8 @@
         $("#menu3").on("click", function(e) {
             reloadPage(e, '', false);
             e.preventDefault();
-            //e.stopImmediatePropagation();
-            //return false;
+            e.stopImmediatePropagation();
+            return false;
         });
 
         /*Update info on the user if logged in, check with server if the user is still active */
@@ -202,8 +202,6 @@
             <div id='name'>
                 <p>Ad Astra Hästcenter</p>
             </div>
-
-            <div id="login"></div>
         </div>
         
         <div id="displayMenu">Menu</div>

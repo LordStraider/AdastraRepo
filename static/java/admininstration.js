@@ -60,7 +60,7 @@ function submitText(form) {
 
 function loadAdminContent(site) {
     $.getJSON(site, function(data) {
-        var content = ['<br/>'];
+        var content = [''];
         var subSite = site.split('/');
         content.push('<div><form class="mainContent" id="newSiteContent" action="javascript:submitText(newSiteContent)">' +
             '<input type="hidden" name="site" value="' + subSite[subSite.length - 2] + '"/>' +

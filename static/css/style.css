@@ -132,12 +132,18 @@ hr {
 }
 
 #login { 
-	margin-top: 0;
-	text-shadow: 1px 1px 2px #ffffff;
-}
-
-#login p {
-	padding: 0 50px;
+	background-color: #EEC591;
+	font-size: 18px;
+	height: 35px;
+	text-shadow: 4px 3px 4px #C0C0C0;
+	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
+	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
+	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
+	box-shadow: 5px 5px 3px #8B5A00;
+	padding: 0 10px;
+	border-radius: 10px;  
+	text-align: center;
+	font-weight: bold;
 }
 
 #logo {
