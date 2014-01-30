@@ -10,7 +10,7 @@ body{
 }
 
 #displayMenu {
-	background-color: #FCD59C;
+	background-color: #EEC591;
 	font-size: 22px;
 	width: 85px;
 	height: 35px;
@@ -18,7 +18,7 @@ body{
 	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
 	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
 	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+	box-shadow: 5px 5px 3px #8B5A00;
 	padding: 0 10px;
 	border-radius: 10px;  
 	text-align: center;

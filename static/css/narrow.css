@@ -17,6 +17,7 @@
 	position:absolute;
 	z-index: -1;
 	height: 250px;
+	box-shadow: 5px 5px 3px #8B5A00;
 	width: 100%;
 }
 

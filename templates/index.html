@@ -19,7 +19,7 @@
     var currPic = 0;
     var numbPic = 0;
 
-    var hasIE = false;
+    //var hasIE = false;
 
     /*Gallery function */
     function setPicIndex(x) {
@@ -32,7 +32,7 @@
         }
     }
 
-    function getInternetExplorerVersion() {
+    /*function getInternetExplorerVersion() {
         var rv = -1; 
         var ua = navigator.userAgent;
         if (navigator.appName == 'Microsoft Internet Explorer') {
@@ -46,7 +46,7 @@
         }
 
         return rv;
-    }
+    }*/
     
 
     $(document).ready(function(){
@@ -56,9 +56,9 @@
         });
 
 
-        if(getInternetExplorerVersion() != -1) { // IE
+        /*if(getInternetExplorerVersion() != -1) { // IE
             hasIE = true;
-        } /* else if (navigator.userAgent.indexOf('Chrome') != -1) { // Chrome
+        } else if (navigator.userAgent.indexOf('Chrome') != -1) { // Chrome
         } else if(navigator.userAgent.indexOf('Safari') != -1) { // Safari
         } else if (navigator.userAgent.indexOf('Firefox') != -1) { // Firefox
         } else if (navigator.userAgent.indexOf('Opera') != -1) { // Opera
@@ -75,8 +75,6 @@
 
         /*Manage menu mouse over and click events, update content */
         $("#menu3").on("click", function(e) {
-            $(this).parent("li").toggleClass('hover');
-            console.log($(this));
             reloadPage(e, '', false);
             e.preventDefault();
             //e.stopImmediatePropagation();
@@ -179,9 +177,9 @@
 
 
     $(function() {
-        adjustStyle($(this).width(), hasIE);
+        adjustStyle($(this).width());
         $(window).resize(function() {
-            adjustStyle($(this).width(), hasIE);
+            adjustStyle($(this).width());
         });
     });
 
@@ -214,18 +212,17 @@
 
         <div id='siteContent'>Välkommen till Ad Astra Hästcenter!<br/>
 Lättast kontaktar du oss med din förfrågan via mail. <br/>
-sally.adastra@gmail.com <br/>
-<br/>
-Telefon; <br/>
-Sara 0737-24 11 51 <br/>
-Sally 0768-38 46 81 <br/>
+<p>Sally: 0768-38 46 81 <a href="mailto:sally.adastra@gmail.com">
+sally.adastra@gmail.com</a></p>
+<p>Sara: 0737-24 11 51 <a href="mailto:adastra.sara@gmail.com">
+adastra.sara@gmail.com</a></p>
 
 Adress; <br/>
 Ad Astra Hästcenter <br/>
 Steninge <br/>
 74195 KNIVSTA <br/>
 <br/><br/>
-Du har en gammal webläsare, för att se denna sida behöver du en modernare webläsare med javascript påslaget, så som:</br><ul><li><a href="http://www.opera.com">Opera</a></li><li><a href="http://www.firefox.com">Firefox</a></li><li><a href="http://www.chrome.com">Chrome</a></li></ul>
+Du har en gammal webläsare, för att se denna sida behöver du en modernare webläsare med <B>javascript</B> påslaget, så som:</br><ul><li><a href="http://www.opera.com">Opera</a></li><li><a href="http://www.firefox.com">Firefox</a></li><li><a href="http://www.chrome.com">Chrome</a></li></ul>
         </div>
         <div class='footer'>
             <hr>

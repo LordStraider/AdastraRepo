@@ -1,0 +1,71 @@
+#menu3 {
+	height: 45px;
+	text-align: center;
+	font-weight: bold;
+    font-size: 16px;
+    text-shadow: 4px 3px 4px #C0C0C0;
+}
+
+#menu3 ul ul {
+	display: none;
+}
+
+#menu3 ul li:hover > ul {
+	display: block;
+}
+
+#menu3 ul {
+	border-color: #101010;
+	border-radius: 1px;
+	box-shadow: 5px 5px 3px #8B5A00;
+	background: #FCD59C; /*#DDC293;*/
+	padding: 0 10px;
+	list-style: none;
+	position: relative;
+	display: inline-table;
+}
+#menu3 ul:after {
+	content: ""; clear: both; display: block;
+}
+
+#menu3 ul li {
+	float: left;
+}
+#menu3 ul li:hover {
+	background: #FFE4B5; 
+}
+#menu3 ul li:hover a {
+	color: #f0f0f0;
+    text-shadow: 3px 2px 3px #B0B0B0;
+}
+
+#menu3 ul li a {
+	color: #303030;
+	display: block; padding: 8px 11px;
+	text-decoration: none;
+}
+		
+#menu3 ul ul {
+	background: #AA6600; 
+	border-radius: 0px; 
+	padding: 0;
+	position: absolute; top: 100%;
+}
+#menu3 ul ul li {
+	color: #303030;
+    text-shadow: 4px 3px 4px #C0C0C0;
+	float: none; 
+	border-top: 2px solid #9A5600;
+	border-bottom: 1px solid #AA6600; position: relative;
+}
+#menu3 ul ul li a {
+	padding: 8px 25px;
+}	
+#menu3 ul ul li a:hover {
+	background: #d3b077;
+	color: #303030;
+}
+		
+#menu3 ul ul ul {
+	position: absolute; left: 100%; top:0;
+}

@@ -138,7 +138,7 @@ function reloadPage(e, preAdress, loggedIn) {
     return false;
 }
 
-function adjustStyle(width, hasIE) {
+function adjustStyle(width) {
     widthInt = parseInt(width, 10);
     if (widthInt < 600) {
         $("#displayMenu").show();
@@ -151,11 +151,11 @@ function adjustStyle(width, hasIE) {
     } else {
         $("#displayMenu").hide();
         $("#menu3").show();
-        if (hasIE) {
-            $("#menu-stylesheet").attr("href", "/static/css/menuIE.css");
-        } else {
-            $("#menu-stylesheet").attr("href", "/static/css/menu.css");
-        }
+        //if (hasIE) {
+        //    $("#menu-stylesheet").attr("href", "/static/css/menuIE.css");
+        //} else {
+        $("#menu-stylesheet").attr("href", "/static/css/menu.css");
+        //}
         $("#size-stylesheet").attr("href", "/static/css/wide.css");
     }
 }
