@@ -73,7 +73,7 @@ function loadAdminContent(site) {
             '<div>[b]<b>Bold text</b>[/b]<br/>[i]<i>Italic text</i>[/i]<br/>[a]<a href="http://corren.se">http://länken.com,' +
             'Beskrivning av länken som kommer synas på hemsidan</a>[/a]<br/>[a]<a href="mailto:sally.karlsson@gmail.com">mailto:' +
             'sally.karlsson@gmail.com, mail to sally.karlsson@gmail.com</a>[/a] Direktlänk för att skicka mail till någon..<br/>' +
-            '[div]Här kan man lägga saker i en låda, bra för att organisera saker, så som bilder i ett rutnät.. [/div]</br><h1>[h1]En rubrik[/h1]</h1><br/><h2>[h2]En annan rubrik[/h2]</h2></div>');
+            '[wrapper][box]Här kan man lägga saker i en låda, bra för att organisera saker, så som bilder i ett rutnät.. [/box][box]låda2[/box]|box]låda3...[/box][/wrapper]</br><h1>[h1]En rubrik[/h1]</h1><br/><h2>[h2]En annan rubrik[/h2]</h2></div>');
 
         $('#siteContent').html(content.join(''));
 

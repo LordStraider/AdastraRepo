@@ -11,9 +11,13 @@ body{
 
 .boxes{
 	margin: 5px;
-	width: 47%;
+	width: 32%;
 	float: left;
 	padding: 5px;
+}
+
+.wrapper{
+	width: 100%;
 }
 
 #displayMenu {

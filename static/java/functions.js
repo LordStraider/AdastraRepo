@@ -48,11 +48,22 @@ function loadContent(site) {
         content = [''];
 
         html2 = '';
-        $(html.split('[div]')).each(function(key, text) {
+        $(html.split('[box]')).each(function(key, text) {
             if (key === 0)
                 html2 = text;
             else
-                html2 += '<div class="boxes">' + text.replace('[/div]', '</div>');
+                html2 += '<div class="boxes">' + text.replace('[/box]', '</div>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
+        $(html.split('[wrapper]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<div class="wrapper">' + text.replace('[/wrapper]', '</div><div style="clear:both;"></div>');
         });
         content.push(html2);
         html = content.join('');
