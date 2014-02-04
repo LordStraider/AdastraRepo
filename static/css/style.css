@@ -9,6 +9,13 @@ body{
 	font-size: 14px;
 }
 
+.boxes{
+	margin: 5px;
+	width: 47%;
+	float: left;
+	padding: 5px;
+}
+
 #displayMenu {
 	background-color: #F0F0F0;
 	font-size: 22px;

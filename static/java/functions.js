@@ -48,6 +48,17 @@ function loadContent(site) {
         content = [''];
 
         html2 = '';
+        $(html.split('[div]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<div class="boxes">' + text.replace('[/div]', '</div>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
         $(html.split('[h2]')).each(function(key, text) {
             if (key === 0)
                 html2 = text;
