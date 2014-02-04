@@ -29,7 +29,7 @@ def uploadFiles(request):
         if request.is_ajax():
             newString = ''  # This variable is going to contain json string for the object in the database.
             site = request.POST.get('site')
-            albumpath = 'home/AdastraRepo/media/contentImages/'
+            albumpath = 'home/AdastraRepo/media/images/contentImages/'
             #albumpath = 'static/albums/' + site + '/'
 
             #if not os.path.isdir(albumpath):  # Check if the path exist, otherwise create it
@@ -68,7 +68,7 @@ def uploadFiles(request):
             obj.save()
 
             if newString != '':
-                json = '{"newFile": "True", "path": "/media/contentImages/", "file": "' + newString + '"}'
+                json = '{"newFile": "True", "path": "/media/images/contentImages/", "file": "' + newString + '"}'
             else:
                 json = '{"newFile": "False"}'
 
@@ -90,7 +90,7 @@ def uploadImage(request):
 
     if request.method == 'POST':
         if request.is_ajax():
-            albumpath = 'home/AdastraRepo/media/images/contentImages/'
+            albumpath = 'home/AdastraRepo/media/images/images/contentImages/'
             file = request.FILES.getlist('file')[0]
             path = '%s' % (albumpath + re.sub('[%s]' % ''.join(chars), '', file.name))
             #path = albumpath + file.name
@@ -317,7 +317,7 @@ def siteAdminContent(request, site=''):  # returns the site content in json form
 @csrf_protect
 def fileLoader(request, site=''):  # returns the content of the albums, listing all pictures in json.
     imageAlbum = Content.objects.get(site=site).text.split(', ')
-    string = '[{"title": "' + imageAlbum.pop(0) + '"}, {"path": "' + settings.MEDIA_URL + 'contentImages/"}, '
+    string = '[{"title": "' + imageAlbum.pop(0) + '"}, {"path": "' + settings.MEDIA_URL + 'images/contentImages/"}, '
     for image in imageAlbum:
         string += '{"fileLoader": "' + image + '"}, '
     string = string[:-2] + ']'
