@@ -5,6 +5,10 @@
 	padding: 150px 50px 20px;
 }
 
+.boxes{
+	width: 49%;
+}
+
 #logo img {
 	position:absolute;
 	z-index: -1;
