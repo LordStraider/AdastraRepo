@@ -7,12 +7,12 @@
 }
 
 #menu3 ul {
-	background: #EEC591; /*#DDC293;*/
-	box-shadow: 5px 5px 3px #8B5A00;
+	background-color: #F0F0F0;
 	border-radius: 10px;  
-	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
-	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
+	background: linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%);  
+	background: -moz-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	background: -webkit-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	box-shadow: 5px 5px 3px #646464;
 	padding: 0 10px;
 	list-style: none;
 	position: relative;
@@ -20,7 +20,7 @@
 }
 
 #menu3 ul ul {
-	background: #CDAA7D;
+	background: #D0D0D0;
 }
 
 #menu3 ul li a {

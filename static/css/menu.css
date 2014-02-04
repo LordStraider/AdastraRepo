@@ -15,12 +15,12 @@
 }
 
 #menu3 ul {
-	background: #FCD59C; /*#DDC293;*/
-	box-shadow: 5px 5px 3px #8B5A00;
+	background-color: #F0F0F0;
 	border-radius: 10px;  
-	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
-	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
+	background: linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%);  
+	background: -moz-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	background: -webkit-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	box-shadow: 5px 5px 3px #646464;
 	padding: 0 10px;
 	list-style: none;
 	position: relative;
@@ -37,9 +37,9 @@
 
 #menu3 ul li:hover {
 	background: #ffffff; 
-	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
-	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
+	background: linear-gradient(top, #F0F0F0 0%, #3C3C3C 100%);  
+	background: -moz-linear-gradient(top, #F0F0F0 0%, #3C3C3C 100%); 
+	background: -webkit-linear-gradient(top, #F0F0F0 0%, #3C3C3C 100%); 
 }
 
 #menu3 ul li:hover a {
@@ -55,16 +55,16 @@
 }
 
 #menu3 ul ul {
-	background: #AA6600; border-radius: 0px; padding: 0;
+	background: #7C7C7C; border-radius: 0px; padding: 0;
 	position: absolute; top: 100%;
 }
 
 #menu3 ul ul li {
 	color: #303030;
-    text-shadow: 4px 3px 4px #C0C0C0;
+    text-shadow: 4px 3px 4px #3C3C3C;
 	float: none; 
-	border-top: 2px solid #9A5600;
-	border-bottom: 1px solid #AA6600; position: relative;
+	border-top: 2px solid #C0C0C0;
+	border-bottom: 1px solid #7C7C7C; position: relative;
 }
 
 #menu3 ul ul li a {
@@ -72,8 +72,8 @@
 }
 
 #menu3 ul ul li a:hover {
-	background: #d3b077;
-	color: #303030;
+	background: #3C3C3C;
+	color: #F0F0F0;
 }
 		
 #menu3 ul ul ul {

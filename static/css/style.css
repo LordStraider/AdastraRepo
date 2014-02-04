@@ -1,26 +1,26 @@
-a:link {color:#606060; text-decoration:none;}      /* unvisited link */
-a:visited {color:#606060; text-decoration:none;}  /* visited link */
-a:hover {color:#F0F0F0; text-decoration:underline;}  /* mouse over link */
-a:active {color:#F0F0F0; text-decoration:underline;}  /* selected link */
+a:link {color:#606060; font-style: italic; text-decoration:underline;}      /* unvisited link */
+a:visited {color:#606060; font-style: italic; text-decoration:underline;}  /* visited link */
+a:hover {color:#F0F0F0; font-style: italic; text-decoration:underline;}  /* mouse over link */
+a:active {color:#F0F0F0; font-style: italic; text-decoration:underline;}  /* selected link */
 
 body{
-	background-color: #FFE4B5;
+	background-color: #E3E3E3;
 	font-family: "Tangerine, serif";
 	font-size: 14px;
 }
 
 #displayMenu {
-	background-color: #EEC591;
+	background-color: #F0F0F0;
 	font-size: 22px;
 	width: 85px;
 	height: 35px;
 	text-shadow: 4px 3px 4px #C0C0C0;
-	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
-	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	box-shadow: 5px 5px 3px #8B5A00;
+	background: linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%);  
+	background: -moz-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	background: -webkit-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	box-shadow: 5px 5px 3px #646464;
 	padding: 0 10px;
-	border-radius: 10px;  
+	border-radius: 10px;
 	text-align: center;
 	font-weight: bold;
 }
@@ -28,9 +28,10 @@ body{
 .footer {
 	border-color: #101010;
 	border-radius: 1px;
-	box-shadow: 5px 5px 3px #8B5A00;
+	box-shadow: 5px 5px 3px #646464;
 	background-color: #FFFFFF;
 	font-size: 12px;
+	border-radius: 10px;
 }
 
 hr {
@@ -39,10 +40,6 @@ hr {
     border: 0;
     margin: 1em 0;
     padding: 0;
-}
-
-.footer a {
-	font-style: italic;
 }
 
 #footerpic {
@@ -68,8 +65,9 @@ hr {
 #siteContent {
 	border-color: #101010;
 	border-radius: 1px;
-	box-shadow: 5px 5px 3px #8B5A00;
+	box-shadow: 5px 5px 3px #646464;
 	background-color: #FFFFFF;
+	border-radius: 10px;
 	padding: 15px;
 }
 
@@ -132,14 +130,14 @@ hr {
 }
 
 #login { 
-	background-color: #EEC591;
+	background-color: #F0F0F0;
 	font-size: 18px;
 	height: 35px;
 	text-shadow: 4px 3px 4px #C0C0C0;
-	background: linear-gradient(top, #FFE4B5 0%, #AA6600 100%);  
-	background: -moz-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	background: -webkit-linear-gradient(top, #FFE4B5 0%, #AA6600 100%); 
-	box-shadow: 5px 5px 3px #8B5A00;
+	background: linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%);  
+	background: -moz-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	background: -webkit-linear-gradient(top, #F0F0F0 0%, #7C7C7C 100%); 
+	box-shadow: 5px 5px 3px #646464;
 	padding: 0 10px;
 	border-radius: 10px;  
 	text-align: center;

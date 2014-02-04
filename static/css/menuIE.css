@@ -1,4 +1,4 @@
-#menu3 {
+/*#menu3 {
 	height: 45px;
 	text-align: center;
 	font-weight: bold;
@@ -18,7 +18,7 @@
 	border-color: #101010;
 	border-radius: 1px;
 	box-shadow: 5px 5px 3px #8B5A00;
-	background: #FCD59C; /*#DDC293;*/
+	background: #FCD59C; 
 	padding: 0 10px;
 	list-style: none;
 	position: relative;
@@ -68,4 +68,4 @@
 		
 #menu3 ul ul ul {
 	position: absolute; left: 100%; top:0;
-}
+}*/

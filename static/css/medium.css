@@ -9,7 +9,8 @@
 	position:absolute;
 	z-index: -1;
 	height: 250px;
-	box-shadow: 5px 5px 3px #8B5A00;
+	box-shadow: 5px 5px 3px #646464;
+	border-radius: 10px;
 	width: 90%;
 }
 
