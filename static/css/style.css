@@ -15,6 +15,10 @@ body{
 	padding: 5px;
 }
 
+.bigbox{
+	margin: 5px;
+}
+
 .wrapper{
 	width: 100%;
 }

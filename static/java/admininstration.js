@@ -10,7 +10,14 @@ function createLink(text) {
 }
 
 function submitText(form) {
-    var text = form.newText.value.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/;/g,':');
+    var text = form.newText.value;
+    
+    if( text.match(/[\<\>!@#\$%^&\*,]+/i) ) {
+        alert('Illegal characters found!');
+    }
+
+    text = text.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/"/g,'&#34;');
+    
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
     var obj = new Object();
@@ -50,7 +57,7 @@ function submitText(form) {
 
         error: function(result) {
             console.log(result.responseText);
-            alert('Något gick fel, antagligen la du in ett ogiltigt tecken.. \n\nresult: ' + result.responseText);
+            alert('Något gick fel, antagligen la du in ett ogiltigt tecken.. \n Tex: backslash, det får man inte ha..');
         }
     });
 }

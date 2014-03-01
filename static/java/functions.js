@@ -59,6 +59,17 @@ function loadContent(site) {
         content = [''];
 
         html2 = '';
+        $(html.split('[bigbox]')).each(function(key, text) {
+            if (key === 0)
+                html2 = text;
+            else
+                html2 += '<div class="bigbox">' + text.replace('[/bigbox]', '</div>');
+        });
+        content.push(html2);
+        html = content.join('');
+        content = [''];
+
+        html2 = '';
         $(html.split('[wrapper]')).each(function(key, text) {
             if (key === 0)
                 html2 = text;
@@ -85,7 +96,7 @@ function loadContent(site) {
             if (key === 0)
                 html2 = text;
             else
-                html2 += '<a href="' + text.replace(',', '">').replace('[/a]', '</a>');
+                html2 += '<a target="_blank" href="' + text.replace(',', '">').replace('[/a]', '</a>');
         });
         content.push(html2);
         content.push('<div style="clear:both;"></div>');
