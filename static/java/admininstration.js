@@ -12,8 +12,8 @@ function createLink(text) {
 function submitText(form) {
     var text = form.newText.value;
 
-    if( text.match(/[\<\>!\$%^&]+/i) ) {
-        $('#result').html("<span>Failed to update, try removing some special characters, like: &#92; < > ! # $ % ^ & </span>");
+    if( text.match(/[\<\>\$%^]+/i) ) {
+        $('#result').html("<span>Failed to update, try removing some special characters, like: &#92; < > $ % ^ </span>");
         return;
     }
 
@@ -58,7 +58,7 @@ function submitText(form) {
 
         error: function(result) {
             console.log(result.responseText);
-            $('#result').html("<span>Failed to update, try removing some special characters, like: &#92; < > ! # $ % ^ & </span>");
+            $('#result').html("<span>Failed to update, check console for update</span>");
         }
     });
 }
