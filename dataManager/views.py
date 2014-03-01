@@ -168,7 +168,7 @@ def submitContent(request):  # Updates the content of a page.
     if not request.user.is_authenticated() and request.user.is_staff:
         return render_to_response('login.html', context_instance=RequestContext(request))
 
-    js = simplejson.loads(request.POST.items()[0][0].encode('utf-8'))  # Read ajax data
+    js = simplejson.loads(request.POST.items()[0][0].encode('utf-8'), strict=False)  # Read ajax data
     text = js.get('text')
     site = js.get('site')
     album = js.get('isAlbum')

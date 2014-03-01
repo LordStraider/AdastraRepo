@@ -17,7 +17,7 @@ function submitText(form) {
         return;
     }
 
-    text = text.replace('\r', '\\r').replace('\n', '\\n').replace(/"/g,'&#34;');
+    text = text.replace(/\r\n|\r|\n/g,"\\r\\n").replace('\t', '\\t').replace(/"/g,'&#34;');
     
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
@@ -57,7 +57,7 @@ function submitText(form) {
         },
 
         error: function(result) {
-            console.log(result.responseText);
+            console.log(result);
             $('#result').html("<span>Failed to update, check console for update</span>");
         }
     });
