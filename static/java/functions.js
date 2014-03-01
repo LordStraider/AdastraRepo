@@ -8,7 +8,7 @@ function loadContent(site) {
             if (key === 0)
                 html2 = text;
             else
-                html2 += '<div class="image"><img src="/media/images/contentImages/' + text.replace(',', '" width="').replace(',', '" height="').replace('[/img]', '" /></div>');
+                html2 += '<div class="image"><img src="/media/images/contentImages/' + text.replace(',height:', '" height="').replace('[/img]', '" /></div>');
         });
         content.push(html2);
         html = content.join('');
