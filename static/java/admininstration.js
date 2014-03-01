@@ -11,9 +11,10 @@ function createLink(text) {
 
 function submitText(form) {
     var text = form.newText.value;
-    
-    if( text.match(/[\<\>!@#\$%^&\*,]+/i) ) {
-        alert('Illegal characters found!');
+
+    if( text.match(/[\<\>!\$%^&]+/i) ) {
+        $('#result').html("<span>Failed to update, try removing some special characters, like: &#92; < > ! # $ % ^ & </span>");
+        return;
     }
 
     text = text.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/"/g,'&#34;');
@@ -57,7 +58,7 @@ function submitText(form) {
 
         error: function(result) {
             console.log(result.responseText);
-            alert('Något gick fel, antagligen la du in ett ogiltigt tecken.. \n Tex: backslash, det får man inte ha..');
+            $('#result').html("<span>Failed to update, try removing some special characters, like: &#92; < > ! # $ % ^ & </span>");
         }
     });
 }
@@ -152,7 +153,12 @@ function uploadImage() {
 
         success: function(data){
             $('textArea').append('[img]' + file.name + ',200,200[/img]');
-            $('#result').html('<span>Successfully image!</span>');
+            $('#result').html('<span>Successfully uploaded image! Note the [img] tag at the bottom.</span>');
+        },
+
+        error: function(result) {
+            console.log(result.responseText);
+            $('#result').html("<span>Failed to upload, check console of chrome for details.</span>");
         },
 
         data: formData,
@@ -368,6 +374,11 @@ function submitAlbum(form) {
 
             $('.multiupload').replaceWith($('.multiupload').clone(true));
             setAlbumListener();
+        },
+
+        error: function(result) {
+            console.log(result.responseText);
+            $('#result').html("<span>Failed to upload</span>");
         },
 
         data: formData,
