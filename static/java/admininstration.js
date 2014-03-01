@@ -12,12 +12,12 @@ function createLink(text) {
 function submitText(form) {
     var text = form.newText.value;
 
-    if( text.match(/[\<\>\$%^]+/i) ) {
+    if( text.match(/[\<\>\$^]+/i) ) {
         $('#result').html("<span>Failed to update, try removing some special characters, like: &#92; < > $ % ^ </span>");
         return;
     }
 
-    text = text.replace(/\r\n|\r|\n/g,"\\r\\n").replace(/"/g,'&#34;');
+    text = text.replace('\r', '\\r').replace('\n', '\\n').replace(/"/g,'&#34;');
     
     var site = form.site.value;
     var isAlbum = form.isAlbum.checked;
